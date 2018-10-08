@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Watakushidekakusanakya",
-  "version": "0.1",
+  "version": "0.3",
   "description": "Images are hidden by Mito Tsukino.",
   "content_scripts": [
     {

@@ -11,6 +11,7 @@ function getId() {
 
 function mito() {
   const imgURL = chrome.extension.getURL("mito.png");
+  // imgタグ対応
   const imgList = document.querySelectorAll('img');
   for (let i = 0; i < imgList.length; i++) {
     if (!imgList[i].classList.contains('mito-background') && !imgList[i].classList.contains('mito-image')) {
@@ -18,6 +19,18 @@ function mito() {
       const id = getId();
       const mitoWrapper = $(`<div id="mito-wrapper-id-${id}" class="mito-wrapper"></div>`);
       $(imgList[i]).wrap(mitoWrapper);
+      $(`#mito-wrapper-id-${id}`).append(`<img class="mito-image" src="${imgURL}">`);
+    }
+  }
+
+  // http://www.nicovideo.jp/video_top のサムネ対応
+  const thumbnailList = document.querySelectorAll('.Thumbnail');
+  for (let i = 0; i < thumbnailList.length; i++) {
+    if (!thumbnailList[i].classList.contains('mito-background') && !thumbnailList[i].classList.contains('mito-image')) {
+      thumbnailList[i].classList.add('mito-background');
+      const id = getId();
+      const mitoWrapper = $(`<div id="mito-wrapper-id-${id}" class="mito-wrapper-niconico"></div>`);
+      $(thumbnailList[i]).wrap(mitoWrapper);
       $(`#mito-wrapper-id-${id}`).append(`<img class="mito-image" src="${imgURL}">`);
     }
   }
